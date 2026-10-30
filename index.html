@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xX_Xx Hub - Painéis & Keys</title>
+    <title>xX_Xx Hub - Painéis & Scripts</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -55,63 +55,6 @@
             color: #a0a0a0;
             font-size: 0.9rem;
             margin-top: 5px;
-        }
-
-        /* Seção de Keys */
-        .keys-card {
-            width: 100%;
-            background: #141419;
-            border: 1px solid #2a0808;
-            border-left: 4px solid #ff2a2a;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .keys-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #ff4d4d;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .keys-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .key-item {
-            background: #09090b;
-            border: 1px solid #282830;
-            padding: 8px 10px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .key-item:hover {
-            border-color: #ff2a2a;
-            background: #180a0a;
-        }
-
-        .key-label {
-            font-size: 0.7rem;
-            color: #888;
-            text-transform: uppercase;
-        }
-
-        .key-value {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #fff;
-            margin-top: 2px;
         }
 
         /* Botões dos Painéis */
@@ -228,7 +171,7 @@
             transform: translateY(-2px);
         }
 
-        /* Modal de Validação de Key */
+        /* Modais */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -250,7 +193,7 @@
             border-radius: 16px;
             padding: 25px;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
             box-shadow: 0 0 30px rgba(255, 42, 42, 0.4);
             animation: popIn 0.3s ease;
@@ -326,6 +269,22 @@
             color: #fff;
         }
 
+        /* Caixa de Script */
+        .script-box {
+            background: #09090b;
+            border: 1px solid #282830;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #ff4d4d;
+            word-break: break-all;
+            max-height: 120px;
+            overflow-y: auto;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
         .toast {
             position: fixed;
             bottom: 20px;
@@ -350,30 +309,9 @@
             <p>Selecione um painel e insira sua key de acesso</p>
         </div>
 
-        <!-- Seção de Chaves -->
-        <div class="keys-card">
-            <div class="keys-title">
-                <i class="fa-solid fa-key"></i> Keys Disponíveis (Clique para Copiar)
-            </div>
-            <div class="keys-grid">
-                <div class="key-item" onclick="copyKey('mm2 Key')">
-                    <span class="key-label">MM2</span>
-                    <span class="key-value">mm2 Key</span>
-                </div>
-                <div class="key-item" onclick="copyKey('99 Key')">
-                    <span class="key-label">99 Noites</span>
-                    <span class="key-value">99 Key</span>
-                </div>
-                <div class="key-item" onclick="copyKey('rivals Key')">
-                    <span class="key-label">Rivals</span>
-                    <span class="key-value">rivals Key</span>
-                </div>
-            </div>
-        </div>
-
         <!-- Lista de Painéis -->
         <div class="panels-grid">
-            <button class="panel-btn" onclick="openModal('MM2', 'mm2 Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel MM2', 'mm2 Key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-crosshair"></i>
                     <span>Painel MM2</span>
@@ -381,7 +319,7 @@
                 <span class="badge">Requer Key</span>
             </button>
 
-            <button class="panel-btn" onclick="openModal('99 Noites', '99 Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel 99 Noites', '99 Key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-moon"></i>
                     <span>Painel 99 Noites</span>
@@ -389,7 +327,7 @@
                 <span class="badge">Requer Key</span>
             </button>
 
-            <button class="panel-btn" onclick="openModal('Rivals', 'rivals Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel Rivals', 'rivals Key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-dragon"></i>
                     <span>Painel Rivals</span>
@@ -397,7 +335,7 @@
                 <span class="badge">Requer Key</span>
             </button>
 
-            <button class="panel-btn" onclick="openModal('Geral', 'mm2 Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel Geral', 'mm2 Key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-cubes"></i>
                     <span>Painel Geral</span>
@@ -417,54 +355,87 @@
         </div>
     </div>
 
-    <!-- Modal de Key -->
+    <!-- Modal de Verificação de Key -->
     <div class="modal-overlay" id="keyModal">
         <div class="modal-card">
-            <h2 id="modalTitle">Acessar Painel</h2>
-            <p>Insira a chave de validação abaixo</p>
+            <h2 id="modalKeyTitle">Acessar Painel</h2>
+            <p>Insira a chave de validação correspondente</p>
             <input type="text" id="keyInput" class="modal-input" placeholder="Digite a Key aqui..." autocomplete="off">
             <div class="modal-btns">
-                <button class="modal-btn btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="modal-btn btn-cancel" onclick="closeKeyModal()">Cancelar</button>
                 <button class="modal-btn btn-submit" onclick="validateKey()">Entrar</button>
             </div>
         </div>
     </div>
 
+    <!-- Modal de Exibição do Script -->
+    <div class="modal-overlay" id="scriptModal">
+        <div class="modal-card">
+            <h2 id="modalScriptTitle">Painel Desbloqueado</h2>
+            <p>Copie o script abaixo para usar no seu executor:</p>
+            <div class="script-box" id="scriptDisplayBox"></div>
+            <div class="modal-btns">
+                <button class="modal-btn btn-cancel" onclick="closeScriptModal()">Fechar Tela</button>
+                <button class="modal-btn btn-submit" onclick="copyCurrentScript()">Copiar Script</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Notificação Toast -->
-    <div class="toast" id="toast">Key copiada com sucesso!</div>
+    <div class="toast" id="toast">Ação realizada com sucesso!</div>
 
     <script>
         let currentTargetPanel = '';
         let expectedKey = '';
+        let activeScriptCode = '';
 
-        function openModal(panelName, requiredKey) {
+        // Banco de scripts para cada painel
+        const scriptsData = {
+            'Painel MM2': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
+            'Painel 99 Noites': 'loadstring(game:HttpGet("https://scriptblox.com/raw/99-Nights-in-the-Forest-SNOW-BIOME-KEYLESS-BEST-99-NIGHTS-IN-THE-FOREST-SCRIPT-VOIDWARE-47274"))()',
+            'Painel Rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
+            'Painel Geral': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()'
+        };
+
+        function openKeyModal(panelName, requiredKey) {
             currentTargetPanel = panelName;
             expectedKey = requiredKey;
-            document.getElementById('modalTitle').innerText = 'Acessar ' + panelName;
+            document.getElementById('modalKeyTitle').innerText = 'Acessar ' + panelName;
             document.getElementById('keyInput').value = '';
             document.getElementById('keyModal').style.display = 'flex';
             document.getElementById('keyInput').focus();
         }
 
-        function closeModal() {
+        function closeKeyModal() {
             document.getElementById('keyModal').style.display = 'none';
         }
 
         function validateKey() {
             const inputVal = document.getElementById('keyInput').value.trim();
             if (inputVal === expectedKey) {
-                alert('Acesso Concedido ao ' + currentTargetPanel + '! Carregando scripts...');
-                closeModal();
+                closeKeyModal();
+                showScriptModal(currentTargetPanel);
             } else {
                 alert('Key Incorreta! Tente novamente.');
             }
         }
 
-        function copyKey(keyText) {
-            navigator.clipboard.writeText(keyText).then(() => {
-                showToast('Key "' + keyText + '" copiada!');
+        function showScriptModal(panelName) {
+            activeScriptCode = scriptsData[panelName] || 'loadstring(game:HttpGet("..."))()';
+            document.getElementById('modalScriptTitle').innerText = panelName + ' Liberado';
+            document.getElementById('scriptDisplayBox').innerText = activeScriptCode;
+            document.getElementById('scriptModal').style.display = 'flex';
+        }
+
+        function closeScriptModal() {
+            document.getElementById('scriptModal').style.display = 'none';
+        }
+
+        function copyCurrentScript() {
+            navigator.clipboard.writeText(activeScriptCode).then(() => {
+                showToast('Script copiado com sucesso!');
             }).catch(() => {
-                showToast('Key: ' + keyText);
+                showToast('Erro ao copiar script.');
             });
         }
 
