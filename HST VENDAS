@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xX_Xx Hub - Painéis & Keys</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0d;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(220, 20, 60, 0.25), transparent 70%),
+                linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95));
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #ff2a2a;
+            text-shadow: 0 0 15px rgba(255, 42, 42, 0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Seção de Keys */
+        .keys-card {
+            width: 100%;
+            background: #141419;
+            border: 1px solid #2a0808;
+            border-left: 4px solid #ff2a2a;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .keys-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ff4d4d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .keys-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .key-item {
+            background: #09090b;
+            border: 1px solid #282830;
+            padding: 8px 10px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .key-item:hover {
+            border-color: #ff2a2a;
+            background: #180a0a;
+        }
+
+        .key-label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .key-value {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        /* Botões dos Painéis */
+        .panels-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel-btn {
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #1f0505 0%, #121215 100%);
+            border: 2px solid #3a0d0d;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 42, 42, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .panel-btn:hover::before {
+            left: 100%;
+        }
+
+        .panel-btn:hover {
+            transform: translateY(-3px);
+            border-color: #ff2a2a;
+            box-shadow: 0 8px 25px rgba(255, 42, 42, 0.3);
+            background: linear-gradient(135deg, #2b0808 0%, #1a1a20 100%);
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-content i {
+            font-size: 1.5rem;
+            color: #ff2a2a;
+        }
+
+        .badge {
+            background: rgba(255, 42, 42, 0.15);
+            border: 1px solid rgba(255, 42, 42, 0.4);
+            color: #ff4d4d;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* Rodapé de Redes */
+        .social-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        .discord-btn {
+            background: #5865F2;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        }
+
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebc57;
+            transform: translateY(-2px);
+        }
+
+        /* Modal de Validação de Key */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #141419;
+            border: 2px solid #ff2a2a;
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 42, 42, 0.4);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-card h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .modal-card p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 14px;
+            background: #09090b;
+            border: 1px solid #3a0d0d;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            margin-bottom: 15px;
+            transition: 0.2s;
+        }
+
+        .modal-input:focus {
+            border-color: #ff2a2a;
+            box-shadow: 0 0 10px rgba(255, 42, 42, 0.3);
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-submit {
+            background: #ff2a2a;
+            color: #fff;
+        }
+
+        .btn-submit:hover {
+            background: #e01b1b;
+        }
+
+        .btn-cancel {
+            background: #25252b;
+            color: #aaa;
+        }
+
+        .btn-cancel:hover {
+            background: #33333d;
+            color: #fff;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            background: #ff2a2a;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: none;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1><i class="fa-solid fa-skull"></i> xX_Xx Hub</h1>
+            <p>Selecione um painel e insira sua key de acesso</p>
+        </div>
+
+        <!-- Seção de Chaves -->
+        <div class="keys-card">
+            <div class="keys-title">
+                <i class="fa-solid fa-key"></i> Keys Disponíveis (Clique para Copiar)
+            </div>
+            <div class="keys-grid">
+                <div class="key-item" onclick="copyKey('mm2 Key')">
+                    <span class="key-label">MM2</span>
+                    <span class="key-value">mm2 Key</span>
+                </div>
+                <div class="key-item" onclick="copyKey('99 Key')">
+                    <span class="key-label">99 Noites</span>
+                    <span class="key-value">99 Key</span>
+                </div>
+                <div class="key-item" onclick="copyKey('rivals Key')">
+                    <span class="key-label">Rivals</span>
+                    <span class="key-value">rivals Key</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Painéis -->
+        <div class="panels-grid">
+            <button class="panel-btn" onclick="openModal('MM2', 'mm2 Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-crosshair"></i>
+                    <span>Painel MM2</span>
+                </div>
+                <span class="badge">Requer Key</span>
+            </button>
+
+            <button class="panel-btn" onclick="openModal('99 Noites', '99 Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Painel 99 Noites</span>
+                </div>
+                <span class="badge">Requer Key</span>
+            </button>
+
+            <button class="panel-btn" onclick="openModal('Rivals', 'rivals Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-dragon"></i>
+                    <span>Painel Rivals</span>
+                </div>
+                <span class="badge">Requer Key</span>
+            </button>
+
+            <button class="panel-btn" onclick="openModal('Geral', 'mm2 Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Painel Geral</span>
+                </div>
+                <span class="badge">Requer Key</span>
+            </button>
+        </div>
+
+        <!-- Links da Comunidade -->
+        <div class="social-section">
+            <a href="https://discord.gg/z5RZtDtt" target="_blank" class="social-btn discord-btn">
+                <i class="fa-brands fa-discord"></i> Grupo Discord
+            </a>
+            <a href="https://chat.whatsapp.com/DZunKk5EcLA0N8y2EMYaEt?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" class="social-btn whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> link do whatsapp aq
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal de Key -->
+    <div class="modal-overlay" id="keyModal">
+        <div class="modal-card">
+            <h2 id="modalTitle">Acessar Painel</h2>
+            <p>Insira a chave de validação abaixo</p>
+            <input type="text" id="keyInput" class="modal-input" placeholder="Digite a Key aqui..." autocomplete="off">
+            <div class="modal-btns">
+                <button class="modal-btn btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="modal-btn btn-submit" onclick="validateKey()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação Toast -->
+    <div class="toast" id="toast">Key copiada com sucesso!</div>
+
+    <script>
+        let currentTargetPanel = '';
+        let expectedKey = '';
+
+        function openModal(panelName, requiredKey) {
+            currentTargetPanel = panelName;
+            expectedKey = requiredKey;
+            document.getElementById('modalTitle').innerText = 'Acessar ' + panelName;
+            document.getElementById('keyInput').value = '';
+            document.getElementById('keyModal').style.display = 'flex';
+            document.getElementById('keyInput').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('keyModal').style.display = 'none';
+        }
+
+        function validateKey() {
+            const inputVal = document.getElementById('keyInput').value.trim();
+            if (inputVal === expectedKey) {
+                alert('Acesso Concedido ao ' + currentTargetPanel + '! Carregando scripts...');
+                closeModal();
+            } else {
+                alert('Key Incorreta! Tente novamente.');
+            }
+        }
+
+        function copyKey(keyText) {
+            navigator.clipboard.writeText(keyText).then(() => {
+                showToast('Key "' + keyText + '" copiada!');
+            }).catch(() => {
+                showToast('Key: ' + keyText);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
