@@ -283,6 +283,8 @@
             overflow-y: auto;
             text-align: left;
             margin-bottom: 15px;
+            user-select: all;
+            -webkit-user-select: all;
         }
 
         .toast {
@@ -311,7 +313,7 @@
 
         <!-- Lista de Painéis -->
         <div class="panels-grid">
-            <button class="panel-btn" onclick="openKeyModal('Painel MM2', 'mm2 Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel MM2', 'Mm2 key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-crosshair"></i>
                     <span>Painel MM2</span>
@@ -319,7 +321,7 @@
                 <span class="badge">Requer Key</span>
             </button>
 
-            <button class="panel-btn" onclick="openKeyModal('Painel 99 Noites', '99 Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel 99 Noites', '99 key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-moon"></i>
                     <span>Painel 99 Noites</span>
@@ -327,18 +329,10 @@
                 <span class="badge">Requer Key</span>
             </button>
 
-            <button class="panel-btn" onclick="openKeyModal('Painel Rivals', 'rivals Key')">
+            <button class="panel-btn" onclick="openKeyModal('Painel Rivals', 'rival key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-dragon"></i>
                     <span>Painel Rivals</span>
-                </div>
-                <span class="badge">Requer Key</span>
-            </button>
-
-            <button class="panel-btn" onclick="openKeyModal('Painel Geral', 'mm2 Key')">
-                <div class="btn-content">
-                    <i class="fa-solid fa-cubes"></i>
-                    <span>Painel Geral</span>
                 </div>
                 <span class="badge">Requer Key</span>
             </button>
@@ -389,12 +383,11 @@
         let expectedKey = '';
         let activeScriptCode = '';
 
-        // Banco de scripts para cada painel
+        // Banco de scripts atualizado
         const scriptsData = {
             'Painel MM2': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
             'Painel 99 Noites': 'loadstring(game:HttpGet("https://scriptblox.com/raw/99-Nights-in-the-Forest-SNOW-BIOME-KEYLESS-BEST-99-NIGHTS-IN-THE-FOREST-SCRIPT-VOIDWARE-47274"))()',
-            'Painel Rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
-            'Painel Geral': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()'
+            'Painel Rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/Rivals-/refs/heads/main/README.md"))()'
         };
 
         function openKeyModal(panelName, requiredKey) {
@@ -421,7 +414,7 @@
         }
 
         function showScriptModal(panelName) {
-            activeScriptCode = scriptsData[panelName] || 'loadstring(game:HttpGet("..."))()';
+            activeScriptCode = scriptsData[panelName] || '';
             document.getElementById('modalScriptTitle').innerText = panelName + ' Liberado';
             document.getElementById('scriptDisplayBox').innerText = activeScriptCode;
             document.getElementById('scriptModal').style.display = 'flex';
@@ -431,12 +424,34 @@
             document.getElementById('scriptModal').style.display = 'none';
         }
 
+        // Função de cópia universal compatível com todos os navegadores móveis
         function copyCurrentScript() {
-            navigator.clipboard.writeText(activeScriptCode).then(() => {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(activeScriptCode).then(() => {
+                    showToast('Script copiado com sucesso!');
+                }).catch(() => {
+                    fallbackCopyText(activeScriptCode);
+                });
+            } else {
+                fallbackCopyText(activeScriptCode);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
                 showToast('Script copiado com sucesso!');
-            }).catch(() => {
-                showToast('Erro ao copiar script.');
-            });
+            } catch (err) {
+                showToast('Selecione e copie manualmente o texto.');
+            }
+            document.body.removeChild(textArea);
         }
 
         function showToast(message) {
