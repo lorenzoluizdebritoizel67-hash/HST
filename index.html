@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xX_Xx Hub - Painéis & Scripts</title>
+    <title>xx_xx hub - painéis & scripts</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -12,6 +12,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            text-transform: lowercase;
         }
 
         body {
@@ -48,13 +49,23 @@
             color: #ff2a2a;
             text-shadow: 0 0 15px rgba(255, 42, 42, 0.6);
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
         .header p {
             color: #a0a0a0;
             font-size: 0.9rem;
             margin-top: 5px;
+        }
+
+        .key-notice {
+            background: rgba(255, 42, 42, 0.1);
+            border: 1px dashed rgba(255, 42, 42, 0.4);
+            color: #ff4d4d;
+            font-size: 0.8rem;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-top: 8px;
+            display: inline-block;
         }
 
         /* Botões dos Painéis */
@@ -307,41 +318,42 @@
     <div class="container">
         <!-- Cabeçalho -->
         <div class="header">
-            <h1><i class="fa-solid fa-skull"></i> xX_Xx Hub</h1>
-            <p>Selecione um painel e insira sua key de acesso</p>
+            <h1><i class="fa-solid fa-skull"></i> xx_xx hub</h1>
+            <p>selecione um painel e insira sua key de acesso</p>
+            <div class="key-notice">atenção: todas as keys são apenas em letras minúsculas</div>
         </div>
 
         <!-- Lista de Painéis -->
         <div class="panels-grid">
-            <button class="panel-btn" onclick="openKeyModal('Painel MM2', 'Mm2 key')">
+            <button class="panel-btn" onclick="openKeyModal('painel mm2', 'mm2 key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-crosshair"></i>
-                    <span>Painel MM2</span>
+                    <span>painel mm2</span>
                 </div>
-                <span class="badge">Requer Key</span>
+                <span class="badge">requer key</span>
             </button>
 
-            <button class="panel-btn" onclick="openKeyModal('Painel 99 Noites', '99 key')">
+            <button class="panel-btn" onclick="openKeyModal('painel 99 noites', '99 key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-moon"></i>
-                    <span>Painel 99 Noites</span>
+                    <span>painel 99 noites</span>
                 </div>
-                <span class="badge">Requer Key</span>
+                <span class="badge">requer key</span>
             </button>
 
-            <button class="panel-btn" onclick="openKeyModal('Painel Rivals', 'rival key')">
+            <button class="panel-btn" onclick="openKeyModal('painel rivals', 'rival key')">
                 <div class="btn-content">
                     <i class="fa-solid fa-dragon"></i>
-                    <span>Painel Rivals</span>
+                    <span>painel rivals</span>
                 </div>
-                <span class="badge">Requer Key</span>
+                <span class="badge">requer key</span>
             </button>
         </div>
 
         <!-- Links da Comunidade -->
         <div class="social-section">
             <a href="https://discord.gg/z5RZtDtt" target="_blank" class="social-btn discord-btn">
-                <i class="fa-brands fa-discord"></i> Grupo Discord
+                <i class="fa-brands fa-discord"></i> grupo discord
             </a>
             <a href="https://chat.whatsapp.com/DZunKk5EcLA0N8y2EMYaEt?s=cl&p=a&mlu=4&ilr=4&iam=2" target="_blank" class="social-btn whatsapp-btn">
                 <i class="fa-brands fa-whatsapp"></i> link do whatsapp aq
@@ -352,12 +364,12 @@
     <!-- Modal de Verificação de Key -->
     <div class="modal-overlay" id="keyModal">
         <div class="modal-card">
-            <h2 id="modalKeyTitle">Acessar Painel</h2>
-            <p>Insira a chave de validação correspondente</p>
-            <input type="text" id="keyInput" class="modal-input" placeholder="Digite a Key aqui..." autocomplete="off">
+            <h2 id="modalKeyTitle">acessar painel</h2>
+            <p>insira a chave de validação correspondente (tudo minúsculo)</p>
+            <input type="text" id="keyInput" class="modal-input" placeholder="digite a key aqui..." autocomplete="off">
             <div class="modal-btns">
-                <button class="modal-btn btn-cancel" onclick="closeKeyModal()">Cancelar</button>
-                <button class="modal-btn btn-submit" onclick="validateKey()">Entrar</button>
+                <button class="modal-btn btn-cancel" onclick="closeKeyModal()">cancelar</button>
+                <button class="modal-btn btn-submit" onclick="validateKey()">entrar</button>
             </div>
         </div>
     </div>
@@ -365,18 +377,18 @@
     <!-- Modal de Exibição do Script -->
     <div class="modal-overlay" id="scriptModal">
         <div class="modal-card">
-            <h2 id="modalScriptTitle">Painel Desbloqueado</h2>
-            <p>Copie o script abaixo para usar no seu executor:</p>
+            <h2 id="modalScriptTitle">painel liberado</h2>
+            <p>copie o script abaixo para usar no seu executor:</p>
             <div class="script-box" id="scriptDisplayBox"></div>
             <div class="modal-btns">
-                <button class="modal-btn btn-cancel" onclick="closeScriptModal()">Fechar Tela</button>
-                <button class="modal-btn btn-submit" onclick="copyCurrentScript()">Copiar Script</button>
+                <button class="modal-btn btn-cancel" onclick="closeScriptModal()">fechar tela</button>
+                <button class="modal-btn btn-submit" onclick="copyCurrentScript()">copiar script</button>
             </div>
         </div>
     </div>
 
     <!-- Notificação Toast -->
-    <div class="toast" id="toast">Ação realizada com sucesso!</div>
+    <div class="toast" id="toast">ação realizada com sucesso!</div>
 
     <script>
         let currentTargetPanel = '';
@@ -385,15 +397,15 @@
 
         // Banco de scripts atualizado
         const scriptsData = {
-            'Painel MM2': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
-            'Painel 99 Noites': 'loadstring(game:HttpGet("https://scriptblox.com/raw/99-Nights-in-the-Forest-SNOW-BIOME-KEYLESS-BEST-99-NIGHTS-IN-THE-FOREST-SCRIPT-VOIDWARE-47274"))()',
-            'Painel Rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/Rivals-/refs/heads/main/README.md"))()'
+            'painel mm2': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
+            'painel 99 noites': 'loadstring(game:HttpGet("https://scriptblox.com/raw/99-Nights-in-the-Forest-SNOW-BIOME-KEYLESS-BEST-99-NIGHTS-IN-THE-FOREST-SCRIPT-VOIDWARE-47274"))()',
+            'painel rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/Rivals-/refs/heads/main/README.md"))()'
         };
 
         function openKeyModal(panelName, requiredKey) {
             currentTargetPanel = panelName;
             expectedKey = requiredKey;
-            document.getElementById('modalKeyTitle').innerText = 'Acessar ' + panelName;
+            document.getElementById('modalKeyTitle').innerText = 'acessar ' + panelName;
             document.getElementById('keyInput').value = '';
             document.getElementById('keyModal').style.display = 'flex';
             document.getElementById('keyInput').focus();
@@ -409,13 +421,13 @@
                 closeKeyModal();
                 showScriptModal(currentTargetPanel);
             } else {
-                alert('Key Incorreta! Tente novamente.');
+                alert('key incorreta! tente novamente.');
             }
         }
 
         function showScriptModal(panelName) {
             activeScriptCode = scriptsData[panelName] || '';
-            document.getElementById('modalScriptTitle').innerText = panelName + ' Liberado';
+            document.getElementById('modalScriptTitle').innerText = panelName + ' liberado';
             document.getElementById('scriptDisplayBox').innerText = activeScriptCode;
             document.getElementById('scriptModal').style.display = 'flex';
         }
@@ -428,7 +440,7 @@
         function copyCurrentScript() {
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(activeScriptCode).then(() => {
-                    showToast('Script copiado com sucesso!');
+                    showToast('script copiado com sucesso!');
                 }).catch(() => {
                     fallbackCopyText(activeScriptCode);
                 });
@@ -447,9 +459,9 @@
             textArea.select();
             try {
                 document.execCommand('copy');
-                showToast('Script copiado com sucesso!');
+                showToast('script copiado com sucesso!');
             } catch (err) {
-                showToast('Selecione e copie manualmente o texto.');
+                showToast('selecione e copie manualmente o texto.');
             }
             document.body.removeChild(textArea);
         }
