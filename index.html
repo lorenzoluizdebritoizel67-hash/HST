@@ -6,7 +6,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "HST VENDAS",
-  "url": "https://lorenzoluizdebritoizel67-hash.github.io/HST/
+  "url": "https://lorenzoluizdebritoizel67-hash.github.io/HST/"
 }
 </script>
     
@@ -365,6 +365,23 @@
                 </div>
                 <span class="badge">requer key</span>
             </button>
+
+            <!-- Novos Botões Adicionados -->
+            <button class="panel-btn" onclick="openKeyModal('script de brookhaven', 'Brook Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>script de brookhaven</span>
+                </div>
+                <span class="badge">requer key</span>
+            </button>
+
+            <button class="panel-btn" onclick="openKeyModal('dress', 'dress Key')">
+                <div class="btn-content">
+                    <i class="fa-solid fa-shirt"></i>
+                    <span>dress</span>
+                </div>
+                <span class="badge">requer key</span>
+            </button>
         </div>
 
         <!-- Links da Comunidade -->
@@ -412,12 +429,14 @@
         let expectedKey = '';
         let activeScriptCode = '';
 
-        // Banco de scripts atualizado
+        // Banco de scripts atualizado com Brookhaven e Dress
         const scriptsData = {
             'painel mm2': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/xX_Xx-a/refs/heads/main/README.md"))()',
             'painel 99 noites': 'loadstring(game:HttpGet("https://scriptblox.com/raw/99-Nights-in-the-Forest-SNOW-BIOME-KEYLESS-BEST-99-NIGHTS-IN-THE-FOREST-SCRIPT-VOIDWARE-47274"))()',
             'painel rivals': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/lorenzoluizdebritoizel67-hash/Rivals-/refs/heads/main/README.md"))()',
-            'painel roube um ovo': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()'
+            'painel roube um ovo': 'loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()',
+            'script de brookhaven': 'loadstring(game:HttpGet("https://scriptblox.com/raw/Brookhaven-RP-Slayer-Hub-246319"))()',
+            'dress': '-- script em breve / indisponível no momento'
         };
 
         function openKeyModal(panelName, requiredKey) {
